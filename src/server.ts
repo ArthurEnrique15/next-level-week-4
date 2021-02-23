@@ -1,6 +1,17 @@
+import 'reflect-metadata';
+import './database' //Não precisa especificar qual o arquivo, pois o padrão é o index
 import express, { request } from 'express';
+import { router } from './routes';
 
 const app = express();
+
+// O express não utiliza somente json, então precisamos informar que o formato usado será este
+app.use(express.json()); 
+
+app.use(router);
+
+app.listen(3333, () => console.log("Server is running!"));
+
 
 /* 
 GET => Busca
@@ -8,7 +19,7 @@ POST => Salvar
 PUT => Alterar
 DELETE => Deletar
 PATCH => Alteração específica
-*/
+
 
 // Os caminhos podem ser iguais desde que os métodos sejam diferentes
 // Se o caminho fosse "/" e fossem 2 métodos get, não funcionaria
@@ -28,4 +39,4 @@ app.post("/", (request, response) => {
     return response.json({ message: "Os dados foram salvos com sucesso!" })
 });
 
-app.listen(3333, () => console.log("Server is running!"));
+*/
