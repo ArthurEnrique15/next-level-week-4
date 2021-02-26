@@ -29,7 +29,7 @@ class SurveyUser {
     created_at: Date;
 
     constructor() {
-        if (!this.id) { //Verifica se o id não existe
+        if (!this.id) { //Verifica se o id da classe não existe
             this.id = uuid()
         }
     }

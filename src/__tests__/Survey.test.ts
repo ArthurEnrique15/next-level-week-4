@@ -1,4 +1,5 @@
 import request from "supertest";
+import { getConnection } from "typeorm";
 import { app } from "../app";
 import createConnection from "../database";
 
@@ -7,6 +8,13 @@ describe("Surveys", () => {
         const connection = await createConnection();
         await connection.runMigrations();
     });
+
+    // Remove todas as tabelas do database de teste depois de executar todos os testes
+    afterAll(async () => {
+        const connection = getConnection();
+        await connection.dropDatabase();
+        await connection.close();
+    })
 
     it("Should be able to create a new survey", async () => {
         const response = await request(app).post("/surveys").send({

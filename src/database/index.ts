@@ -10,7 +10,7 @@ export default async (): Promise<Connection> => {
                 // IF TERNÁRIO
                 // ? COMANDO A SER EXECUTADO NO IF
                 // : COMANDO A SER EXECUTADO NO ELSE
-                // Sempre que uma variável de ambiente for utilizada, deve-se escrever process.ent
+                // Sempre que uma variável de ambiente for utilizada, deve-se escrever process.env
                 process.env.NODE_ENV === 'test' 
                 ? "./src/database/database.test.sqlite"
                 : defaultOptions.database
